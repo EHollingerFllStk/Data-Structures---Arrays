@@ -148,3 +148,38 @@ newArray.push('!')
 // newArray.pop();
 newArray.delete(1)
 console.log(newArray);
+
+////Interview Question////
+//Create a function that reverses a string:
+
+// const myStr = 'Hi my name is Widgie and I play the ukulele!';
+
+// function reverse(str) {
+//   //create an empty string for new string
+//   var newStr = [];
+//   //create decrementing FOR loop 
+//   for (let i = str.length - 1; i > 0; i--) {
+//     newStr += str[i];
+//   }
+//   //return the new string
+//   return newStr;
+// }
+
+// console.log(reverse(myStr))
+
+function reverse2(str) {
+  //check input
+  if (!str || str.length < 2 || typeof str !== 'string') {
+    return 'hmm that is not good';
+  }
+  
+  const backwards = [];
+  const totalItems = str.length - 1;
+  for (let i = totalItems; i >= 0; i--) {
+  backwards.push(str[i]);
+  }
+  console.log(backwards)
+  return backwards.join('') //or .toString
+}
+
+console.log(reverse2('hi my name is Beth'))
