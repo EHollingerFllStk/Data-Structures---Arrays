@@ -69,28 +69,82 @@ var object3 = {value:10};
 //instantiation
 //use when want to make multiple copies of an object
 
-class Player {
-  constructor(name, type){ 
-    console.log(this);
-    this.name = name; 
-    this.type = type;
+// class Player {
+//   constructor(name, type){ 
+//     console.log(this);
+//     this.name = name; 
+//     this.type = type;
+//   }
+//   introduce() {
+//     console.log(`Hi I am ${this.name}, I'm a ${this.type}`)
+//   }
+// }
+
+// class Wizard extends Player {
+//   constructor(name, type) {
+//     super(name, type)
+//   }
+//   play() {
+//     console.log(`WEEEEEEEE I'm a ${this.type}`)
+//   }
+// }
+
+// const wizard1 = new Wizard('Shelly', 'Healer')
+// const wizard2 = new Wizard('Shawn', 'Dark Magic');
+
+// wizard1.play()
+// wizard2.introduce()
+
+//Building arrays -JS
+
+class MyArray {
+  constructor() {
+    this.length = 0;
+    this.data = {};
   }
-  introduce() {
-    console.log(`Hi I am ${this.name}, I'm a ${this.type}`)
+  
+  get(index) {
+    return this.data[index]
+  }
+
+  push(item) {
+    this.data[this.length] = item;
+    this.length++;
+    return this.length;
+  }
+
+  pop() {
+    const lastItem =   this.data[this.length-1];
+    delete this.data[this.length-1];
+    this.length--;
+    return lastItem;
+  }
+
+  delete(index) {
+    const item = this.data[index];
+    this.shiftItems(index);
+  }
+
+  shiftItems(index) {
+    for (let i = index; i < this.length-1; i++ ) {
+      this.data[i] = this.data[i+1];
+    }
+    delete this.data[this.length-1];
+    this.length--;
+    //this.data[this.length-1];
   }
 }
 
-class Wizard extends Player {
-  constructor(name, type) {
-    super(name, type)
-  }
-  play() {
-    console.log(`WEEEEEEEE I'm a ${this.type}`)
-  }
-}
+//each time run push will add data to length of the object
 
-const wizard1 = new Wizard('Shelly', 'Healer')
-const wizard2 = new Wizard('Shawn', 'Dark Magic');
+const newArray = new MyArray();
+//console.log(newArray)
+//console.log(newArray.get(0)); //undefined b/c nothing in array
 
-wizard1.play()
-wizard2.introduce()
+newArray.push('hi')
+newArray.push('you')
+newArray.push('!')
+// newArray.pop();
+// newArray.pop();
+newArray.delete(1)
+console.log(newArray);
